@@ -12,7 +12,7 @@ class Article {
     required this.prix,
     required this.categorie,
   });
-  String getPrixEuro() => "${prix / 10}€";
+  String getPrixEuro() => "${prix}€";
 
   Map<String, dynamic> toMap() {
     return {
