@@ -1,8 +1,10 @@
-import 'package:epsi_shop/cart_page.dart';
+import 'package:epsi_shop/bo/article.dart';
+import 'package:epsi_shop/page/cart_page.dart';
+import 'package:epsi_shop/page/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'home_page.dart';
+import 'page/home_page.dart';
 
 //Ici on créé notre routeur
 // La route "/" peut aller vers la route "/cart"
@@ -12,7 +14,10 @@ final _router = GoRouter(routes: [
     GoRoute(
       path: 'cart',
       builder: (_, __) => CartPage(),
-    )
+    ),
+    GoRoute(
+        path: 'detail',
+        builder: (_, state) => DetailPage(article: state.extra as Article))
   ])
 ]);
 
@@ -24,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
